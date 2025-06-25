@@ -11,8 +11,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/user-badges")
-
+@RequestMapping("/api/leaderboard/v1")
 public class UserController {
     private final UserService userService;
 

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 
-public class UserConsumer {
+public class UserMessageConsumer {
     private final UserService userService;
 
     @KafkaListener(

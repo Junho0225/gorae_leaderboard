@@ -25,7 +25,6 @@ public class UserService {
             user.setUserId(event.getUserId());
             user.setUserName(event.getUserName());
             user.setProfileImgUrl(event.getProfileImgUrl());
-            user.setUserBadge(event.getUserBadge());
             userRepository.save(user);
         }
     }

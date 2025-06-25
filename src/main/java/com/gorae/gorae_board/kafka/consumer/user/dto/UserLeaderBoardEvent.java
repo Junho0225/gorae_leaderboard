@@ -8,12 +8,11 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class UserLeaderBoardEvent {
-    public static final String Topic = "user";  // Producer와 동일
+    public static final String Topic = "user-leaderboard";  // Producer와 동일
 
     private String action;
     private String userId;
     private String userName;
     private String profileImgUrl;
-    private String userBadge;
     private LocalDateTime eventTime;
 }
