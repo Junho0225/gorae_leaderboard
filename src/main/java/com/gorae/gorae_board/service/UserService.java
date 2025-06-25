@@ -3,6 +3,8 @@ package com.gorae.gorae_board.service;
 import com.gorae.gorae_board.domain.dto.UserDto;
 import com.gorae.gorae_board.domain.entity.User;
 import com.gorae.gorae_board.domain.repository.UserRepository;
+import com.gorae.gorae_board.kafka.producer.KafkaMessageProducer;
+import com.gorae.gorae_board.kafka.producer.post.dto.UserStatusEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +17,16 @@ import java.util.stream.Collectors;
 
 public class UserService {
     private final UserRepository userRepository;
+    private final KafkaMessageProducer kafkaMessageProducer;
 
     //유저 상세 정보 조회
     public UserDto getUserInfo(Long userId) {
         User user = userRepository.findByUserId(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
+
+        UserStatusEvent event = UserStatusEvent.fromEntity(user);
+        kafkaMessageProducer.send(UserStatusEvent.TOPIC, event);
+
         return toUserDto(user);
     }
 
