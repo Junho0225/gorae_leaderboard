@@ -20,7 +20,7 @@ public class UserService {
     private final KafkaMessageProducer kafkaMessageProducer;
 
     //유저 상세 정보 조회
-    public UserDto getUserInfo(Long userId) {
+    public UserDto getUserInfo(String userId) {
         User user = userRepository.findByUserId(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 

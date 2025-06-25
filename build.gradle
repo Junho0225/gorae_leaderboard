@@ -24,8 +24,7 @@ repositories {
 }
 
 dependencies {
-	//  MariaDB JDBC 드라이버
-	implementation 'org.mariadb.jdbc:mariadb-java-client:3.3.3'
+	implementation 'mysql:mysql-connector-java:8.0.33'
 
 	//  Spring Boot 기본 모듈
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -42,7 +41,7 @@ dependencies {
 	runtimeOnly 'io.jsonwebtoken:jjwt-gson:0.12.5'
 
 	// ❌ 사용하지 않음 (MariaDB만 사용하므로 주석 처리 유지)
-	// runtimeOnly 'com.mysql:mysql-connector-j:8.4.0'
+	runtimeOnly 'com.mysql:mysql-connector-j:8.4.0'
 
 	//  Lombok
 	compileOnly 'org.projectlombok:lombok'

@@ -2,8 +2,6 @@ package com.gorae.gorae_board.kafka.consumer.like;
 
 import com.gorae.gorae_board.kafka.consumer.like.dto.LikeStatusEvent;
 import com.gorae.gorae_board.kafka.consumer.like.service.LikeCommentService;
-import com.gorae.gorae_board.kafka.consumer.user.dto.UserLeaderBoardEvent;
-import com.gorae.gorae_board.kafka.consumer.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -29,7 +27,7 @@ public class LikeConsumer {
             ack.acknowledge();
         }
         if ("싫어요".equals(event.getAction())) {
-            //likeCommentService.processCommentLikeCancel(event);
+            likeCommentService.processCommentLikeCancel(event);
             ack.acknowledge();
         }
     }

@@ -17,7 +17,7 @@ public class UserController {
 
     //정보 조회
     @GetMapping("/{userId}")
-    public ResponseEntity<UserDto> getUserInfo(@PathVariable Long userId) {
+    public ResponseEntity<UserDto> getUserInfo(@PathVariable String userId) {
         return ResponseEntity.ok(userService.getUserInfo(userId));
     }
 

@@ -14,10 +14,10 @@ import java.time.LocalDateTime;
 @Table(name = "user_badge")
 public class User{
 
-    @Id  // 반드시 추가!
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id") // PK 컬럼명 (예: id)
-    private String id;
+    @Column(name = "id") // 기본키 컬럼
+    private Long id;
 
     @Column(name="user_name")
     private String userName;

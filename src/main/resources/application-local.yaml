@@ -1,0 +1,29 @@
+server:
+  port: 8083
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:13309/gorae-leaderboard-db?serverTimezone=UTC&useSSL=true&autoReconnect=true&useUnicode=true&characterEncoding=utf-8
+    username: user
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-test-query: SELECT 1  # HikariCP 유효성 검사 추가
+      validation-timeout: 5000
+
+  jpa:
+    hibernate:
+      ddl-auto: create  # 오직 테스트 환경에서만
+      generate-ddl: true   # 오직 테스트 환경에서만
+      show-sql: true
+    open-in-view: false
+
+  # post 서비스 application.yml
+  logging:
+    level:
+      com.gorae.gorae_post.api.open: DEBUG
+
+  jwt:
+    header: Authorization
+    secret-key: AADfaskllew32dsfasdtossoiseeTG764Gdslkj298GsdachsisddogaeWg86G
+

@@ -1,7 +1,7 @@
 package com.gorae.gorae_board.kafka.consumer.user;
 
 import com.gorae.gorae_board.kafka.consumer.user.dto.UserLeaderBoardEvent;
-import com.gorae.gorae_board.kafka.consumer.user.service.UserService;
+import com.gorae.gorae_board.kafka.consumer.user.service.UserConsumerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 
 public class UserMessageConsumer {
-    private final UserService userService;
+    private final UserConsumerService userService;
 
     @KafkaListener(
             topics = UserLeaderBoardEvent.Topic,
