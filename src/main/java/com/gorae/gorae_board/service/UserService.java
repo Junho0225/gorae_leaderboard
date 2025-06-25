@@ -6,7 +6,9 @@ import com.gorae.gorae_board.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -14,26 +16,66 @@ import java.util.List;
 public class UserService {
     private final UserRepository userRepository;
 
-    // 뱃지 등록
-    public void saveUserBadge(UserDto dto) {
-        User user = new User();
-        user.setUserId(dto.getUserId());
-        user.setBadgeStatus(dto.getBadgeStatus());
-        user.setAwardedAt(dto.getAwardedAt());
-        user.setCommentCount(dto.getCommentCount());
-        user.setLikeCount(dto.getLikeCount());
-        user.setSelectedCount(dto.getSelectedCount());
-
-        userRepository.save(user);
+    //유저 상세 정보 조회
+    public UserDto getUserInfo(Long userId) {
+        User user = userRepository.findByUserId(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        return toUserDto(user);
     }
 
-    // 전체 조회
-    public List<User> getAllUserBadges() {
-        return userRepository.findAll();
+    //좋아요 개수 기준 전체 순위
+    public List<UserDto> getAllUsersByLikes() {
+        return userRepository.findAll().stream()
+                .sorted(Comparator.comparing(User::getLikeCount, Comparator.nullsLast(Comparator.reverseOrder())))
+                .map(this::toUserDto)
+                .collect(Collectors.toList());
     }
 
-    // 사용자별 조회
-    public List<User> getUserBadgesByUserId(Long userId) {
-        return userRepository.findByUserId(userId);
+    //채택 수 기준 전체 순위
+    public List<UserDto> getAllUsersBySelected() {
+        return userRepository.findAll().stream()
+                .sorted(Comparator.comparing(User::getSelectedCount, Comparator.nullsLast(Comparator.reverseOrder())))
+                .map(this::toUserDto)
+                .collect(Collectors.toList());
+    }
+
+    //채택률 기준 전체 순위
+    public List<UserDto> getAllUsersBySelectedRate() {
+        return userRepository.findAll().stream()
+                .sorted(Comparator.comparing(
+                        this::calcSelectedRate,
+                        Comparator.nullsLast(Comparator.reverseOrder())
+                ))
+                .map(this::toUserDto)
+                .collect(Collectors.toList());
+    }
+
+    //User → UserDto 변환
+    private UserDto toUserDto(User user) {
+        UserDto dto = new UserDto();
+        dto.setUserId(user.getUserId());
+        dto.setUserBadge(user.getUserBadge());
+        dto.setLikeBadge(user.getLikeBadge());
+        dto.setCommentCount(user.getCommentCount());
+        dto.setLikeCount(user.getLikeCount());
+        dto.setSelectedCount(user.getSelectedCount());
+        dto.setAwardedAt(user.getAwardedAt());
+
+        double selectedRate = calcSelectedRate(user);
+        dto.setSelectedRate(selectedRate);
+
+        return dto;
+    }
+
+    //채택률
+    private double calcSelectedRate(User user) {
+        try {
+            Long commentCount = Long.parseLong(user.getCommentCount());
+            Long selectedCount = Long.parseLong(user.getSelectedCount());
+            if (commentCount == 0) return 0.0;
+            return ((double) selectedCount / commentCount) * 100;
+        } catch (NumberFormatException e) {
+            return 0.0;
+        }
     }
 }

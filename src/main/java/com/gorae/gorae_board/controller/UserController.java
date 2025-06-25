@@ -16,23 +16,28 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
-    // 뱃지 등록 API
-    @PostMapping
-    public ResponseEntity<String> createUserBadge(@RequestBody UserDto dto) {
-        userService.saveUserBadge(dto);
-        return ResponseEntity.ok("뱃지 저장 완료");
-    }
-
-    // 전체 조회 API
-    @GetMapping
-    public ResponseEntity<List<User>> getAllUserBadges() {
-        return ResponseEntity.ok(userService.getAllUserBadges());
-    }
-
-    // 특정 사용자 뱃지 조회 API
+    //정보 조회
     @GetMapping("/{userId}")
-    public ResponseEntity<List<User>> getUserBadges(@PathVariable Long userId) {
-        return ResponseEntity.ok(userService.getUserBadgesByUserId(userId));
+    public ResponseEntity<UserDto> getUserInfo(@PathVariable Long userId) {
+        return ResponseEntity.ok(userService.getUserInfo(userId));
+    }
+
+    //좋아요 순위
+    @GetMapping("/likes/all")
+    public ResponseEntity<List<UserDto>> getAllUsersByLikes() {
+        return ResponseEntity.ok(userService.getAllUsersByLikes());
+    }
+
+    //채택 순위
+    @GetMapping("/selected/all")
+    public ResponseEntity<List<UserDto>> getAllUsersBySelected() {
+        return ResponseEntity.ok(userService.getAllUsersBySelected());
+    }
+
+    //채택률 순위
+    @GetMapping("/selectedrate/all")
+    public ResponseEntity<List<UserDto>> getAllUsersBySelectedRate() {
+        return ResponseEntity.ok(userService.getAllUsersBySelectedRate());
     }
 
 }

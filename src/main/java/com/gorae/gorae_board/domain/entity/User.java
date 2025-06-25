@@ -14,26 +14,35 @@ import java.time.LocalDateTime;
 @Table(name = "user_badge")
 public class User{
 
-    @Id
+    @Id  // 반드시 추가!
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id") // 뱃지 고유 번호
-    private Long id;
+    @Column(name = "id") // PK 컬럼명 (예: id)
+    private String id;
+
+    @Column(name="user_name")
+    private String userName;
 
     @Column(name = "user_id", nullable = false)
-    private Long userId; // UserEntity와 연관 (User 테이블의 PK)
+    private String userId; // UserEntity와 연관 (User 테이블의 PK)
 
-    @Column(name = "badge_status", nullable = false)
-    private Long badgeStatus; // Badge Table의 FK (획득한 뱃지 종류)
+    @Column(name="profile_img_url")
+    private String profileImgUrl;
+
+    @Column(name = "userBadge", nullable = false)
+    private String userBadge = "1";; // Badge Table의 FK (획득한 뱃지 종류) (1,2,3,4,5)
+
+    @Column(name = "likeBadge", nullable = false) //(획득한 뱃지) (1,2,3,4,5)
+    private String likeBadge = "1";
 
     @Column(name = "awarded_at")
     private LocalDateTime awardedAt; // 뱃지 획득 일시
 
     @Column(name = "comment_count")
-    private Long commentCount; // 댓글 수
+    private String commentCount; // 댓글 수
 
     @Column(name = "like_count")
-    private Long likeCount; // 좋아요 수
+    private String likeCount; // 좋아요 수
 
     @Column(name = "selected_count")
-    private Long selectedCount; // 채택 수
+    private String selectedCount; // 채택 수
 }
