@@ -21,8 +21,8 @@ public class LikeCommentService {
         User user = userRepository.findById(event.getCommentLikeUserId())
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
-        long likeCount = Long.parseLong(user.getLikeCount());
-        user.setLikeCount(Long.toString(likeCount + 1));
+        Long likeCount = user.getLikeCount();
+        user.setLikeCount(likeCount + 1);
         user.setLikeBadge(Long.toString(Long.parseLong((user.getLikeBadge())+1)));
     }
 
@@ -31,7 +31,7 @@ public class LikeCommentService {
         User user = userRepository.findById(event.getCommentLikeUserId())
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
-        long likeCount = Long.parseLong(user.getLikeCount());
-        user.setLikeCount(Long.toString(Math.max(0, likeCount - 1)));
+        Long likeCount = user.getLikeCount();
+        user.setLikeCount(Math.max(0, likeCount - 1));
     }
 }

@@ -16,9 +16,9 @@ public class UserDto {
     private String userBadge;      // (1~5)
     private String likeBadge;      // (1~5)
     private String profileImgUrl;
-    private String commentCount;
-    private String likeCount;
-    private String selectedCount;
+    private Long commentCount;
+    private Long likeCount;
+    private Long selectedCount;
     private Double selectedRate; // 채택률, 실시간 계산 (선택수/댓글수*100)
     private LocalDateTime awardedAt;
 }

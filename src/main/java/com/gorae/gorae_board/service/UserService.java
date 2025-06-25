@@ -77,8 +77,8 @@ public class UserService {
     //채택률
     private double calcSelectedRate(User user) {
         try {
-            Long commentCount = Long.parseLong(user.getCommentCount());
-            Long selectedCount = Long.parseLong(user.getSelectedCount());
+            Long commentCount = user.getCommentCount();
+            Long selectedCount = user.getSelectedCount();
             if (commentCount == 0) return 0.0;
             return ((double) selectedCount / commentCount) * 100;
         } catch (NumberFormatException e) {

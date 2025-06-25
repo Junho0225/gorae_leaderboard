@@ -34,11 +34,11 @@ public class User{
     private LocalDateTime awardedAt; // 뱃지 획득 일시
 
     @Column(name = "comment_count")
-    private String commentCount; // 댓글 수
+    private Long commentCount = 0L; // 댓글 수
 
     @Column(name = "like_count")
-    private String likeCount; // 좋아요 수
+    private Long likeCount = 0L; // 좋아요 수
 
     @Column(name = "selected_count")
-    private String selectedCount; // 채택 수
+    private Long selectedCount = 0L; // 채택 수
 }

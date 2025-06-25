@@ -19,6 +19,6 @@ public class CommentEventConsumerService {
     public void processCommentStatusEvent(CommentEvent event) {
         User user = userRepository.findByUserId((event.getCommentUserId()))
                 .orElseThrow(() -> new RuntimeException("User not found"));
-        user.setCommentCount(Long.toString(Long.parseLong((user.getSelectedCount())+1)));
+        user.setCommentCount(user.getCommentCount()+1);
     }
 }
