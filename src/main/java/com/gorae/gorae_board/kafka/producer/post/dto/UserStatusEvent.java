@@ -20,8 +20,8 @@ public class UserStatusEvent {
         UserStatusEvent event = new UserStatusEvent();
 
         event.userId = user.getUserId();
-        event.userBadge = user.getUserBadge();
-        event.likeBadge = user.getLikeBadge();
+        event.userBadge = user.getUserBadge().toString();
+        event.likeBadge = user.getLikeBadge().toString();
 
         return event;
     }

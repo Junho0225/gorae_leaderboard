@@ -61,8 +61,8 @@ public class UserService {
     private UserDto toUserDto(User user) {
         UserDto dto = new UserDto();
         dto.setUserId(user.getUserId());
-        dto.setUserBadge(user.getUserBadge());
-        dto.setLikeBadge(user.getLikeBadge());
+        dto.setUserBadge(user.getUserBadge().toString());
+        dto.setLikeBadge(user.getLikeBadge().toString());
         dto.setCommentCount(user.getCommentCount());
         dto.setLikeCount(user.getLikeCount());
         dto.setSelectedCount(user.getSelectedCount());
