@@ -1,4 +1,4 @@
-package com.gorae.gorae_post.kafka.producer;
+package com.gorae.gorae_board.kafka.producer;
 
 
 import lombok.RequiredArgsConstructor;

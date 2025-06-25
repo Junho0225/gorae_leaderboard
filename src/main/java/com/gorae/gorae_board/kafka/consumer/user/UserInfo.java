@@ -1,4 +1,4 @@
-package com.gorae.gorae_post.kafka.consumer.user;
+package com.gorae.gorae_board.kafka.consumer.user;
 
 import lombok.*;
 

@@ -1,4 +1,4 @@
-package com.gorae.gorae_post.kafka.producer.alim.dto;
+package com.gorae.gorae_board.kafka.producer.alim.dto;
 
 public class LeaderboardRankChangeDto {
     

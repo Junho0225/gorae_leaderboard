@@ -1,4 +1,4 @@
-package com.gorae.gorae_post.kafka.consumer.leaderboard.dto;
+package com.gorae.gorae_board.kafka.consumer.leaderboard.dto;
 
 public class AnswerSelectedEventDto {
     public static final String TOPIC = "answer-selected-info";

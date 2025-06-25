@@ -1,13 +1,13 @@
-package com.gorae.gorae_post;
-
+package com.gorae.gorae_board;
 import org.junit.jupiter.api.Test;
+
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class GoraePostApplicationTests {
+class GoraeApplicationTests {
 
-//	@Test
-//	void contextLoads() {
-//	}
+	@Test
+	void contextLoads() {
+	}
 
 }

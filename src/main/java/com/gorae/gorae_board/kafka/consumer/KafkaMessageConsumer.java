@@ -1,4 +1,4 @@
-package com.gorae.gorae_post.kafka.consumer;
+package com.gorae.gorae_board.kafka.consumer;
 
 public class KafkaMessageConsumer {
 }
