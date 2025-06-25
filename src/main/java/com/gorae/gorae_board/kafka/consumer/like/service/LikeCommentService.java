@@ -23,7 +23,7 @@ public class LikeCommentService {
 
         Long likeCount = user.getLikeCount();
         user.setLikeCount(likeCount + 1);
-        user.setLikeBadge(Long.toString(Long.parseLong((user.getLikeBadge())+1)));
+        user.setLikeBadge(user.getLikeBadge()+1);
     }
 
     @Transactional

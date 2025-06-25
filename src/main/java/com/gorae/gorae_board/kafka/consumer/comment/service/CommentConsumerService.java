@@ -17,16 +17,6 @@ public class CommentConsumerService {
         User user = userRepository.findByUserId((event.getAdoptUserId()))
                 .orElseThrow(() -> new RuntimeException("User not found"));
         user.setSelectedCount(user.getSelectedCount()+1);
-        user.setUserBadge(Long.toString(Long.parseLong((user.getUserBadge())+1)));
+        user.setUserBadge(user.getUserBadge()+1);
     }
-
-//    @Transactional
-//    public void process(AdoptStatusCommentEvent event) {
-//        User user = userRepository.findByUserId((event.getAdoptUserId()))
-//                .orElseThrow(() -> new RuntimeException("User not found"));
-//        user.setSelectedCount(Long.toString(Long.parseLong((user.getSelectedCount())+1)));
-//        user.setUserBadge(Long.toString(Long.parseLong((user.getUserBadge())+1)));
-//    }
-
-
 }
