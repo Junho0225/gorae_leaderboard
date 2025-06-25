@@ -22,19 +22,19 @@ public class UserController {
     }
 
     //좋아요 순위
-    @GetMapping("/likes/all")
+    @GetMapping("auth/likes/all")
     public ResponseEntity<List<UserDto>> getAllUsersByLikes() {
         return ResponseEntity.ok(userService.getAllUsersByLikes());
     }
 
     //채택 순위
-    @GetMapping("/selected/all")
+    @GetMapping("auth/selected/all")
     public ResponseEntity<List<UserDto>> getAllUsersBySelected() {
         return ResponseEntity.ok(userService.getAllUsersBySelected());
     }
 
     //채택률 순위
-    @GetMapping("/selectedrate/all")
+    @GetMapping("auth/selectedrate/all")
     public ResponseEntity<List<UserDto>> getAllUsersBySelectedRate() {
         return ResponseEntity.ok(userService.getAllUsersBySelectedRate());
     }

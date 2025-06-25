@@ -15,15 +15,11 @@ import java.time.LocalDateTime;
 public class User{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id") // 기본키 컬럼
-    private Long id;
+    @Column(name = "user_id", nullable = false)
+    private String userId; // UserEntity와 연관 (User 테이블의 PK)
 
     @Column(name="user_name")
     private String userName;
-
-    @Column(name = "user_id", nullable = false)
-    private String userId; // UserEntity와 연관 (User 테이블의 PK)
 
     @Column(name="profile_img_url")
     private String profileImgUrl;
