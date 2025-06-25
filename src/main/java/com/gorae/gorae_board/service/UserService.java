@@ -25,8 +25,7 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         UserStatusEvent event = UserStatusEvent.fromEntity(user);
-        kafkaMessageProducer.send(UserStatusEvent.TOPIC, event);
-
+//        kafkaMessageProducer.send(UserStatusEvent.TOPIC, event);
         return toUserDto(user);
     }
 

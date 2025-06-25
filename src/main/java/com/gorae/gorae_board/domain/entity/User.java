@@ -25,10 +25,10 @@ public class User{
     private String profileImgUrl;
 
     @Column(name = "userBadge", nullable = false)
-    private Long userBadge = 0L;; // Badge Table의 FK (획득한 뱃지 종류) (1,2,3,4,5)
+    private Long userBadge = 1L;; // Badge Table의 FK (획득한 뱃지 종류) (1,2,3,4,5)
 
     @Column(name = "likeBadge", nullable = false) //(획득한 뱃지) (1,2,3,4,5)
-    private Long likeBadge = 0L;
+    private Long likeBadge = 1L;
 
     @Column(name = "awarded_at")
     private LocalDateTime awardedAt; // 뱃지 획득 일시
