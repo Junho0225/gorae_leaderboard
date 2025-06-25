@@ -1,5 +1,6 @@
 package com.gorae.gorae_board.controller;
 
+import com.gorae.gorae_board.common.GatewayRequestHeaderUtils;
 import com.gorae.gorae_board.service.UserService;
 import com.gorae.gorae_board.domain.dto.UserDto;
 import com.gorae.gorae_board.domain.entity.User;
@@ -16,8 +17,9 @@ public class UserController {
     private final UserService userService;
 
     //정보 조회
-    @GetMapping("/{userId}")
-    public ResponseEntity<UserDto> getUserInfo(@PathVariable String userId) {
+    @GetMapping("/detail")
+    public ResponseEntity<UserDto> getUserInfo() {
+        String userId = GatewayRequestHeaderUtils.getUserId();
         return ResponseEntity.ok(userService.getUserInfo(userId));
     }
 
