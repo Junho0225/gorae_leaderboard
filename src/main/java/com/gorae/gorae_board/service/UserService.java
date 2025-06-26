@@ -66,6 +66,7 @@ public class UserService {
         dto.setLikeCount(user.getLikeCount());
         dto.setSelectedCount(user.getSelectedCount());
         dto.setAwardedAt(user.getAwardedAt());
+        dto.setUserName(user.getUserName());
 
         double selectedRate = calcSelectedRate(user);
         dto.setSelectedRate(selectedRate);
